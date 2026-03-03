@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+dist/
+build/
+.env
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+.env/
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Databases
+*.sqlite3
+*.db
+backend/database.db
+
+# OS Files
+.DS_Store
+Thumbs.db
