@@ -32,7 +32,7 @@ function App() {
         headers['Authorization'] = `Bearer ${token}`;
       }
 
-      const response = await fetch('http://localhost:8000/api/generate', {
+      const response = await fetch('/api/generate', {
         method: 'POST',
         headers,
         body: JSON.stringify({ title, style })

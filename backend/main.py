@@ -26,6 +26,13 @@ app = FastAPI(
     version="4.0.0",
     debug=True
 )
+@app.get("/")
+def root():
+    return {"message": "AI Studio API running"}
+
+@app.get("/api")
+def api_test():
+    return {"status": "API working"}
 
 app.add_middleware(
     CORSMiddleware,
