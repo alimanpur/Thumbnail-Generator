@@ -32,7 +32,7 @@ function App() {
         headers['Authorization'] = `Bearer ${token}`;
       }
 
-      const response = await fetch('/api/generate', {
+      const response = await fetch('https://thumbnail-generator-2g2e.onrender.com/api/generate', {
         method: 'POST',
         headers,
         body: JSON.stringify({ title, style })
@@ -138,7 +138,7 @@ function App() {
 
               <div className="flex items-center gap-2 bg-black/40 px-3 py-1.5 rounded-lg border border-white/5">
                 <User className="w-4 h-4 text-slate-400" />
-                <span className="text-xs font-medium text-slate-300 truncate max-w-[120px]">
+                <span className="text-xs font-medium text-slate-300 truncate max-w-30">
                   {user.email.split('@')[0]}
                 </span>
                 <button
@@ -157,7 +157,7 @@ function App() {
         </div>
       </nav>
 
-      <main className="flex-1 p-4 md:p-6 lg:p-8 max-w-[1600px] w-full mx-auto relative z-10 flex flex-col">
+      <main className="flex-1 p-4 md:p-6 lg:p-8 max-w-400 w-full mx-auto relative z-10 flex flex-col">
         {currentView === 'profile' ? (
           <ProfileGallery />
         ) : (
@@ -208,9 +208,9 @@ function App() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full relative group overflow-hidden rounded-xl p-[1px] disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full relative group overflow-hidden rounded-xl p-px disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    <span className="absolute inset-0 bg-linear-to-r from-cyan-400 to-blue-500 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></span>
                     <div className="relative bg-[#0a0a0a]/80 backdrop-blur-sm px-6 py-3.5 rounded-[11px] flex items-center justify-center transition-all duration-300 group-hover:bg-transparent">
                       <span className="font-semibold text-[15px] tracking-wide text-white flex items-center gap-2 group-hover:text-white">
                         {isLoading ? (
@@ -248,7 +248,7 @@ function App() {
                         onClick={() => handleLoadHistory(item)}
                         className="w-full text-left group relative bg-black/40 border border-white/5 rounded-xl p-3 flex items-center gap-4 hover:border-cyan-500/50 transition-colors"
                       >
-                        <div className="w-20 h-11 bg-slate-900 rounded-md overflow-hidden flex-shrink-0 shadow-sm border border-white/5">
+                        <div className="w-20 h-11 bg-slate-900 rounded-md overflow-hidden shrink-0 shadow-sm border border-white/5">
                           <img src={item.url} alt="thumbnail" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                         </div>
                         <div className="min-w-0 flex-1">
@@ -264,7 +264,7 @@ function App() {
             </div>
 
             <div className="lg:col-span-8 flex flex-col gap-6 mt-6 lg:mt-0">
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col h-full min-h-[300px] md:min-h-[500px]">
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col h-full min-h-75 md:min-h-125">
 
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 md:mb-6 px-2 md:px-4 gap-4 sm:gap-0">
                   <div className="flex items-center gap-2 text-sm font-medium text-slate-300">
@@ -306,8 +306,8 @@ function App() {
                         crossOrigin="anonymous"
                       />
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/95 via-[#0a0a0a]/40 to-transparent"></div>
-                      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a]/95 via-[#0a0a0a]/40 to-transparent"></div>
+                      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-black/60 to-transparent"></div>
 
                       <div className="absolute inset-x-0 bottom-0 p-4 md:p-12 lg:p-16 flex flex-col justify-end items-center text-center">
                         <h2

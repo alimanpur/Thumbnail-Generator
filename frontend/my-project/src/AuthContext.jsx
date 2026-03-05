@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
         formData.append('username', email); // OAuth2PasswordRequestForm expects username
         formData.append('password', password);
 
-        const response = await fetch('http://localhost:8000/api/auth/login', {
+        const response = await fetch('https://thumbnail-generator-2g2e.onrender.com/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const register = async (email, password) => {
-        const response = await fetch('http://localhost:8000/api/auth/register', {
+        const response = await fetch('https://thumbnail-generator-2g2e.onrender.com/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

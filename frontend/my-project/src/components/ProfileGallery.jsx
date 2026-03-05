@@ -11,7 +11,7 @@ export default function ProfileGallery() {
     useEffect(() => {
         const fetchThumbnails = async () => {
             try {
-                const res = await fetch('http://localhost:8000/api/profile/thumbnails', {
+                const res = await fetch('https://thumbnail-generator-2g2e.onrender.com/api/profile/thumbnails', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
