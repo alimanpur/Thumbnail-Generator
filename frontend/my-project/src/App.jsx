@@ -72,6 +72,7 @@ function App() {
       const canvas = await html2canvas(previewRef.current, {
         scale: 2,
         useCORS: true,
+        allowTaint: true,
         backgroundColor: '#0a0a0a',
         logging: false
       });
@@ -86,6 +87,7 @@ function App() {
       document.body.removeChild(link);
     } catch (err) {
       console.error("Error downloading image:", err);
+      alert('Failed to download thumbnail. Please try again or check your browser console for details.');
     }
   };
 
@@ -343,6 +345,10 @@ function App() {
           </div>
         )}
       </main>
+
+      <footer className="text-center text-slate-500 text-sm py-8 mt-12 border-t border-white/10">
+        © 2026 Aliasger Manpurwala. All rights reserved. Built with React & FastAPI.
+      </footer>
     </div>
   );
 }
