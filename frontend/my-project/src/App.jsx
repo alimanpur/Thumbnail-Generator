@@ -1,5 +1,5 @@
 import { useState, useRef, useContext } from 'react';
-import html2canvas from 'html2canvas';
+import { toPng } from 'html-to-image';
 import { Download, Loader2, Image as ImageIcon, Sparkles, LayoutPanelLeft, User, LogOut } from 'lucide-react';
 import { AuthContext } from './AuthContext';
 import AuthModal from './components/AuthModal';
@@ -68,26 +68,29 @@ function App() {
   const handleDownload = async () => {
     if (!previewRef.current || !activeThumbnail) return;
 
+    const node = previewRef.current;
+    const originalBorderRadius = node.style.borderRadius;
+    
     try {
-      const canvas = await html2canvas(previewRef.current, {
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#0a0a0a',
-        logging: false
+      node.style.borderRadius = '0';
+      
+      const dataUrl = await toPng(node, {
+        quality: 1.0,
+        pixelRatio: 2,
+        cacheBust: true
       });
-
-      const image = canvas.toDataURL("image/png", 1.0);
 
       const link = document.createElement('a');
       link.download = `thumbnail_${activeThumbnail.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.png`;
-      link.href = image;
+      link.href = dataUrl;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     } catch (err) {
       console.error("Error downloading image:", err);
       alert('Failed to download thumbnail. Please try again or check your browser console for details.');
+    } finally {
+      node.style.borderRadius = originalBorderRadius;
     }
   };
 
